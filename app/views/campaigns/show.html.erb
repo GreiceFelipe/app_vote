@@ -1,0 +1,46 @@
+<section class="container">
+  <div class="columns features is-centered">
+    <div class="column is-4">
+      <div class="section">
+ 
+        <div class="card is-shady">
+          <div class="card-image">
+            <div class="section">
+              <figure class="image is-3by3">
+                <% if @campaign.image.attached? %>
+                  <%= image_tag @campaign.image %>
+                <% end %>
+              </figure>
+            </div>
+          </div>
+ 
+          <div class="card-content">
+            <div class="content section">
+              <h2 class="title has-text-centered"><%= @campaign.title %></h2>
+              <p><%= @campaign.description %></p>
+              <time datetime="2016-1-1"><%= @campaign.created_at %></time>
+            </div>
+          </div>
+          <% if @campaign.finished %>
+            <div class="section">
+              <%# TODO - Voting Result %>
+            </div>
+          <% else %>
+            <% if @voter_present %>
+                <div class="section">
+                  <p> Você já realizou um voto nessa campanha </p>
+                <div>
+            <% else %>
+              <div class="has-text-centered section" id="all-options">
+                <% @campaign.options.each do |option| %>
+                  <div id='<%= option.id %>'><%= option.name.html_safe %></div>
+                <% end %>
+                <div id='voter_number' class='hidden'><%= @voter_number %></div>
+              </div>
+            <% end %>  
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
