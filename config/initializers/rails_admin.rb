@@ -37,5 +37,20 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+
+   
+    config.model Vote do
+      visible false
+    end
+
+    config.model User do
+      visible false
+    end
+
+    config.model Option do
+      visible false
+    end
+    
+
   end
 end

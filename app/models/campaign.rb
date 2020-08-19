@@ -12,7 +12,8 @@ class Campaign < ApplicationRecord
 
   # Checks if the campaign is finished and aborts the Campaign update
   def finished?
-    if finished
+    campaign = Campaign.find(self.id)
+    if campaign.finished
       throw(:abort)
     end
   end

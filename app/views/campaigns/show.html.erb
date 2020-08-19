@@ -23,7 +23,10 @@
           </div>
           <% if @campaign.finished %>
             <div class="section">
-              <%# TODO - Voting Result %>
+              <% @total_votes.each do |total| %>
+                <p><%= total[:name] %> (<%= total[:percent] %>%)</p>
+                <progress class="progress is-info" value="<%= total[:percent] %>" max="100"><%= total[:percent] %>%</progress>
+              <% end %>
             </div>
           <% else %>
             <% if @voter_present %>
